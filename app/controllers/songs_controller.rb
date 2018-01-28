@@ -42,4 +42,16 @@ class SongsController < ApplicationController
     erb :'/songs/edit'
   end
 
+  patch '/songs/:slug' do
+    @song = Song.find_by_slug(params[:slug])
+    
+    if Artist.find_by(params[:artist])
+      artist = Artist.find_by(params[:artist])
+    else
+      artist = Artist.create(params[:artist])
+    end
+    artist.songs << @song
+    artist.save
+  end
+
 end
