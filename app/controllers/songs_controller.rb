@@ -16,11 +16,13 @@ class SongsController < ApplicationController
   post '/songs' do
     @song = Song.create(params[:song])
 
-    if @song.artist_id == nil
+    if Artist.find_by(params[:artist])
+      artist = Artist.find_by(params[:artist])
+    else
       artist = Artist.create(params[:artist])
-      artist.songs << @song
-      artist.save
-    end
+    end 
+    artist.songs << @song
+    artist.save
 
     params[:genres].each do |genre|
       @song.genres << Genre.find(genre)
