@@ -42,7 +42,7 @@ class SongsController < ApplicationController
     erb :'/songs/edit'
   end
 
-  patch '/songs/:slug' do
+  patch '/songs/:id' do
     binding.pry
     @song = Song.find_by_slug(params[:slug])
     @song.update(params[:song])
@@ -55,5 +55,6 @@ class SongsController < ApplicationController
     artist.songs << @song
     artist.save
   end
+  
   redirect '/songs/:slug'
 end
