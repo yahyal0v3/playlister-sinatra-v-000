@@ -1,5 +1,5 @@
 <h1>Edit Song</h1>
-<form action="/songs" method="POST">
+<form action="/songs/<%=@song.slug%>" method="POST">
   Song Title: <input type="text" id="Name" name="song[name]" >
   <br><br>
   Artist Name: <input type="text" id="Artist Name" name="artist[name]" >
