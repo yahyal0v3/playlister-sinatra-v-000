@@ -55,9 +55,12 @@ class SongsController < ApplicationController
     artist.songs << @song
     artist.save
 
-    params[:genres].each do |genre_id|
-      @song.update(genres: Genre.find(genre_id))
-    end
+    if params[:genres]
+      @song.genres.clear
+      params[:genres].each do |genre|
+        @song.genres << Genre.find(genre)
+      end
+    end 
 
     flash[:message] = "Successfully updated song."
     redirect "/songs/#{@song.slug}"
