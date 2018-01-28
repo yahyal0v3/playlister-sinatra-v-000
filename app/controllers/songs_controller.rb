@@ -55,5 +55,5 @@ class SongsController < ApplicationController
     artist.songs << @song
     artist.save
   end
-
+  redirect '/songs/:slug'
 end
