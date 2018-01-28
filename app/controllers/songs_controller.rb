@@ -56,7 +56,7 @@ class SongsController < ApplicationController
     artist.save
 
     params[:genres].each do |genre_id|
-      @song.update(genre: Genre.find(genre_id))
+      @song.update(genres: Genre.find(genre_id))
     end
 
     flash[:message] = "Successfully updated song."
