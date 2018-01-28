@@ -51,7 +51,7 @@ class SongsController < ApplicationController
       artist = Artist.create(params[:artist])
     end
     artist.songs << @song
-    artist.savw
+    artist.save
   end
 
 end
