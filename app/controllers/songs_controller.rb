@@ -43,6 +43,7 @@ class SongsController < ApplicationController
   end
 
   patch '/songs/:slug' do
+    binding.pry
     @song = Song.find_by_slug(params[:slug])
     @song.update(params[:song])
 
